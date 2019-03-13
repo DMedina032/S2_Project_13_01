@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Dajah Medina
+   Date:   3.12.19
    
    Filename: bw_review.js
 	
@@ -33,19 +33,21 @@
       within textStr
 
 */
+function init() {
+      var stars =
+}
 
 
 
-  
 
 
-  
-  
-  
+
+
+
 /*=================================================================*/
 
 function countCharacters(textStr) {
-   var commentregx = /\s/g;
-   var chars = textStr.replace(commentregx, "");
-   return chars.length;
-}   
+      var commentregx = /\s/g;
+      var chars = textStr.replace(commentregx, "");
+      return chars.length;
+}
