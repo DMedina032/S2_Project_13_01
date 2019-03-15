@@ -34,7 +34,15 @@
 
 */
 function init() {
-      var stars =
+      var stars = "span#stars";
+      for (var i = 0; i < Array.length; i++) {
+            stars[i].style.cursor = "pointer";
+            document.addEventListener("mouseenter", lightStars);
+      }
+
+      // 
+      document.addEventListener("keyup", updateCount);
+
 }
 
 
