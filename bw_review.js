@@ -33,26 +33,67 @@
       within textStr
 
 */
+// the init function purpose is to define the event listeners used in the page. 
+window.onload = init;
+
 function init() {
-      var stars = "span#stars";
-      for (var i = 0; i < Array.length; i++) {
+      //  This loops through the star collection for each star image and changes the cusor style to pointer and added an eventListener to run the light stars function and mouseenter is an event thats occuring over each star image. The text area box runs the updateCount function in response to the keyup event.
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < stars.length; i++) {
             stars[i].style.cursor = "pointer";
-            document.addEventListener("mouseenter", lightStars);
+            stars[i].addEventListener("mouseenter", lightStars);
       }
 
-      // 
-      document.addEventListener("keyup", updateCount);
+      // by using the document.getElementById I was able to target the comment id in the HTML and added an event listener with the cursor style set to keyup.
+      document.getElementById("comment").addEventListener("keyup", updateCount);
 
+}
+// funnction alows us so set the lightStars with the perameter of e and inside of that, I declared the varible of starNumber and set the value of e.target.alt
+function lightStars(e) {
+      var starNumber = e.target.alt;
+      var stars = document.querySelectorAll("span#stars img");
+
+      for (var i = 0; i < starNumber; i++) {
+            stars[i].src = "bw_star2.png";
+      }
+      for (var i = starNumber; i < 5; i++) {
+            stars[i].src = "bw_star.png";
+      }
+      document.getElementById("rating").value = starNumber + "stars";
+      e.target.addEventListener("mouseleave", turnOffStars);
+      e.target.addEventListener("click",
+            function () {
+                  e.target.removeEventListener("mouseleave", turnOffStars);
+            }
+      );
+}
+
+function turnOffStars() {
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < 5; i++) {
+            stars[i].src = "bw_star.png";
+      }
+      document.getElementById("rating").value = "";
 }
 
 
 
 
 
-
-
-
 /*=================================================================*/
+function updateCount() {
+      var commentText = document.getElementById("comment").value;
+      var charCount = countCharacters(commentText);
+      var wordCountBox = document.getElementById("wordCount");
+      wordCountBox.value = charCount + "/1000";
+      if (charCount > 1000) {
+            wordCountBox.style.color = "white";
+            wordCountBox.style.backgroundColor = "red";
+      } else {
+            wordCountBox.style.color = "black";
+            wordCountBox.style.backgroundColor = "white";
+      }
+}
 
 function countCharacters(textStr) {
       var commentregx = /\s/g;
