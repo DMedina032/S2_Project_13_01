@@ -48,7 +48,7 @@ function init() {
       document.getElementById("comment").addEventListener("keyup", updateCount);
 
 }
-// funnction alows us so set the lightStars with the perameter of e and inside of that, I declared the varible of starNumber and set the value of e.target.alt
+// funnction alows us so set the lightStars with the perameter of e and inside of that, I declared the varible of starNumber and set the value of e.target.alt. I again declared a value this time called stars and set the value to a document and querySelectall is used to select everything in the quotation marks. I created a for loop to loop  through the starNumber varible for everythng in the array and the same thing for the the other image.
 function lightStars(e) {
       var starNumber = e.target.alt;
       var stars = document.querySelectorAll("span#stars img");
